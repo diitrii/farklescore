@@ -1,6 +1,5 @@
 import tkinter as t
 from tkinter import Frame
-from tkinter.ttk import *
 import createnewplayer as p
 
 
@@ -30,7 +29,7 @@ class App:
         s.o.pack()
         # start game button
         s.startgame = t.Button(f, text="Start Game", command=s.startgamewindow)
-        s.startgame.pack(side="bottom")
+        s.startgame.pack(side="top", pady=5)
 
     def createplayer(s):
         typedname = s.e.get().strip()
@@ -52,12 +51,15 @@ class App:
             return
         s.players.pop(-1)
         s.o.config(text="\n".join(str(p) for p in s.players))
+    # function to open new window
 
-    def startgamewindow(n):
-        gamewindow = Toplevel(t)
+    def startgamewindow(s):
+        gamewindow = t.Toplevel()  # create a new window
         gamewindow.title("FarkleScore.exe")
-        gamewindow.geometry("1000x1000")
-        t.Label(gamewindow, text="Game Status").pack
+        gamewindow.geometry("500x500")
+        t.Label(gamewindow, text="Game Status").pack()
+        # printing list of players
+        t.Label(gamewindow, text="\n".join(str(p) for p in s.players)).pack()
 
 
 r = t.Tk()
