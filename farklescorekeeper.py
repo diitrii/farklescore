@@ -1,11 +1,14 @@
 import tkinter as t
 from tkinter import Frame
+from tkinter.ttk import *
 import createnewplayer as p
 
 
 class App:
     # initialization inside class
     def __init__(s, r):
+        # s = standard
+        # r = root
         s.r = r
         # define player array
         s.players = []
@@ -25,6 +28,9 @@ class App:
         # output area
         s.o = t.Label(r, text="", justify="left")
         s.o.pack()
+        # start game button
+        s.startgame = t.Button(f, text="Start Game", command=s.startgamewindow)
+        s.startgame.pack(side="bottom")
 
     def createplayer(s):
         typedname = s.e.get().strip()
@@ -47,8 +53,15 @@ class App:
         s.players.pop(-1)
         s.o.config(text="\n".join(str(p) for p in s.players))
 
+    def startgamewindow(n):
+        gamewindow = Toplevel(t)
+        gamewindow.title("FarkleScore.exe")
+        gamewindow.geometry("1000x1000")
+        t.Label(gamewindow, text="Game Status").pack
+
 
 r = t.Tk()
 r.geometry("500x500")
+r.title('Farkle Score Keeper')
 app = App(r)
 r.mainloop()
