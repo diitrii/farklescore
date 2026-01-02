@@ -9,6 +9,7 @@ class App:
         # s = standard
         # r = root
         s.unbankedscore = t.IntVar()
+        s.undopoints = 0
         s.r = r
         # define player array
         s.players = []
@@ -76,7 +77,15 @@ class App:
             display.append(f"{player}{marker}")
         s.statuslabel.config(text="\n".join(display))
 
-    # bank points from players
+    def undobutton(s):
+        # go back one player
+        s.currentplayerindex = (s.currentplayerindex - 1) % len(s.players)
+        prev_player = s.players[s.currentplayerindex]
+        if prev_player.Points > 0:
+            prev_player.Points -= s.undopoints
+        s.updatestatus()
+        # bank points from players
+
     def bankpoints(s):
         # check if no players
         if not s.players:
@@ -94,9 +103,10 @@ class App:
         # bank points to current player
         current_player = s.players[s.currentplayerindex]
         current_player.Points += points
+        s.undopoints = current_player.Points
 
         # clear entry
-        s.PointEntry.delete(0, 'end')
+        s.eraseentry()
 
         # move to next player (wrap around)
         s.currentplayerindex = (s.currentplayerindex + 1) % len(s.players)
@@ -189,7 +199,8 @@ class App:
         s.PointEntry = t.Entry(entryframe, textvariable=s.unbankedscore)
         s.PointEntry.pack()
         # button that deletes anything entered into the entry command
-        s.Erase = t.Button(fframe, text="C", command=s.eraseentry)
+        s.Erase = t.Button(
+            fframe, text="C", command=s.eraseentry, width=50, height=50)
         s.Erase.pack(side="left")
         # button that banks points from the entry command into a player's points
         s.Bank = t.Button(fframe, text="Bank",
@@ -236,6 +247,8 @@ class App:
         s.FourKindAndPair = t.Button(
             tframe, text="4Kind + Pair", command=s.addfifteenhundred)
         s.FourKindAndPair.pack(side="left")
+        s.Undo = t.Button(fframe, text="Undo", command=s.undobutton)
+        s.Undo.pack(side="left")
 
 
 r = t.Tk()
