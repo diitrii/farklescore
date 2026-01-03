@@ -196,56 +196,68 @@ class App:
         # fancy frame
         tframe = Frame(gamewindow)
         tframe.pack(side="top")
+        # fancy frame
+        frframe = Frame(gamewindow)
+        frframe.pack(side="top")
+        # entry for points
         s.PointEntry = t.Entry(entryframe, textvariable=s.unbankedscore)
         s.PointEntry.pack()
         # button that deletes anything entered into the entry command
         s.Erase = t.Button(
-            fframe, text="C", command=s.eraseentry, width=50, height=50)
+            fframe, text="C", command=s.eraseentry, width=2)
         s.Erase.pack(side="left")
         # button that banks points from the entry command into a player's points
         s.Bank = t.Button(fframe, text="Bank",
-                          command=s.bankpoints, bg='#37cc3e')
+                          command=s.bankpoints, bg='#37cc3e', width=5)
         s.Bank.pack(side="left")
         # button to switch players in the case of a Farkle
         s.Farkle = t.Button(fframe, text="Farkled",
-                            command=s.switchturn, bg='#ce0d0d')
+                            command=s.switchturn, bg='#ce0d0d', width=5)
         s.Farkle.pack(side="left")
-        s.Ones = t.Button(sframe, text="One", command=s.addones)
+        s.Ones = t.Button(sframe, text="One",
+                          command=s.addones, width=5, height=3)
         s.Ones.pack(side="left")
-        s.Fives = t.Button(sframe, text="Five", command=s.addfives)
+        s.Fives = t.Button(sframe, text="Five",
+                           command=s.addfives, width=5, height=3)
         s.Fives.pack(side="left")
-        s.ThreeOnes = t.Button(sframe, text="3Ones", command=s.addthreehundred)
+        s.ThreeOnes = t.Button(tframe, text="3Ones",
+                               command=s.addthreehundred, width=5, height=3)
         s.ThreeOnes.pack(side="left")
-        s.ThreeTwos = t.Button(sframe, text="3Twos", command=s.addtwohundred)
+        s.ThreeTwos = t.Button(tframe, text="3Twos",
+                               command=s.addtwohundred, width=5, height=3)
         s.ThreeTwos.pack(side="left")
         s.ThreeThrees = t.Button(
-            sframe, text="3Three", command=s.addthreehundred)
+            tframe, text="3Three", command=s.addthreehundred, width=5, height=3)
         s.ThreeThrees.pack(side="left")
-        s.ThreeFours = t.Button(sframe, text="3Fours",
-                                command=s.addfourhundred)
+        s.ThreeFours = t.Button(tframe, text="3Fours",
+                                command=s.addfourhundred, width=5, height=3)
         s.ThreeFours.pack(side="left")
-        s.ThreeFives = t.Button(sframe, text="3Fives",
-                                command=s.addfivehundred)
+        s.ThreeFives = t.Button(tframe, text="3Fives",
+                                command=s.addfivehundred, width=5, height=3)
         s.ThreeFives.pack(side="left")
-        s.ThreeSixes = t.Button(sframe, text="3Sixes", command=s.addsixhundred)
+        s.ThreeSixes = t.Button(tframe, text="3Sixes",
+                                command=s.addsixhundred, width=5, height=3)
         s.ThreeSixes.pack(side="left")
-        s.FourKind = t.Button(tframe, text="4Kind", command=s.fourkind)
+        s.FourKind = t.Button(frframe, text="4Kind",
+                              command=s.fourkind, width=5, height=3)
         s.FourKind.pack(side="left")
-        s.FiveKind = t.Button(tframe, text="5Kind", command=s.fivekind)
+        s.FiveKind = t.Button(frframe, text="5Kind",
+                              command=s.fivekind, width=5, height=3)
         s.FiveKind.pack(side="left")
-        s.SixKind = t.Button(tframe, text="6Kind", command=s.sixkind)
+        s.SixKind = t.Button(frframe, text="6Kind",
+                             command=s.sixkind, width=5, height=3)
         s.SixKind.pack(side="left")
-        s.Straight = t.Button(tframe, text="Straight 1-6",
-                              command=s.addfifteenhundred)
+        s.Straight = t.Button(frframe, text="Straight 1-6",
+                              command=s.addfifteenhundred, width=9, height=3)
         s.Straight.pack(side="left")
         s.ThreePairs = t.Button(
-            tframe, text="3Pairs", command=s.addfifteenhundred)
+            frframe, text="3Pairs", command=s.addfifteenhundred, width=6, height=3)
         s.ThreePairs.pack(side="left")
         s.TwoTriplets = t.Button(
-            tframe, text="2Triplets", command=s.addtwentyfivehundred)
+            frframe, text="2Triplets", command=s.addtwentyfivehundred, width=6, height=3)
         s.TwoTriplets.pack(side="left")
         s.FourKindAndPair = t.Button(
-            tframe, text="4Kind + Pair", command=s.addfifteenhundred)
+            frframe, text="4Kind + Pair", command=s.addfifteenhundred, width=9, height=3)
         s.FourKindAndPair.pack(side="left")
         s.Undo = t.Button(fframe, text="Undo", command=s.undobutton)
         s.Undo.pack(side="left")
