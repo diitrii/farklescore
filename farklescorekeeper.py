@@ -172,6 +172,9 @@ class App:
 
     # function to open new window
     def startgamewindow(s):
+        if len(s.players) < 2:
+            s.o.config(text="At least 2 players required to start game.")
+            return
         # create a new window
         gamewindow = t.Toplevel()
         gamewindow.title("FarkleScore.exe")
