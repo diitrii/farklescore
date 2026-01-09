@@ -18,3 +18,9 @@ ver 1.0 - 01-01-26
     >> usable score keeper with buttons working for farkle
 
     >> added an undo button which allows someone to undo the last added score
+
+ver 1.0.1 - 01-09-26
+
+    >> first EXE file version
+
+    >> first full release
